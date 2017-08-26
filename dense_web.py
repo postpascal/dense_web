@@ -12,11 +12,27 @@ def result():
 
 @app.route("/run",methods=["GET","POST"])
 def run():
-        optest=request.form['optest']
-        optest2=request.form['optest2']
-        print optest,optest2
-	call(['ls',optest])
-	time.sleep(3)
+        checkpoint=request.form['checkpoint']
+        if not checkpoint:
+            checkpoint="checkpoint.t7"
+        image_size=request.form['image_size']
+        if not image_size:
+            image_size="720"
+        gpu=request.form['gpu']
+        if not gpu:
+            gpu=0
+        input_dir=request.form['input_dir']
+        if not input_dir:
+            input_dir=""
+        input_image=request.form['input_image']
+        if not input_image:
+            input_image="tt.jpg"
+        num_proposals=request.form['num_proposals']
+        if not num_proposals:
+            num_proposals=1000
+        print checkpoint
+        cmd=['th','run_model.lua','-checkpoint',checkpoint,'-image_size',image_size,'-gpu',0,'-input_image',input_image]
+	call(['python','test.py'])
 	return render_template('/index.html')
 
 
