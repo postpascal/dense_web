@@ -5,7 +5,7 @@ import datetime
 import time
 app = Flask(__name__,
         static_url_path='', 
-            static_folder='data',
+            static_folder='web_data',
             template_folder='templates')
 # app=Flask(__name__)
 
