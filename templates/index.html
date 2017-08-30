@@ -46,7 +46,8 @@
     function loadData() {
       var data_dir = getUrlParam('data_dir', 'data');
       var input_json_path = data_dir + '/results.json';
-      var pathmod = input_json_path + '?sigh=' + Math.floor(Math.random() * 100000); // prevent caching
+      //var pathmod = input_json_path + '?sigh=' + Math.floor(Math.random() * 100000); // prevent caching
+      var pathmod='data/results.json'
       $.getJSON(pathmod, function(data) {
         input_struct = data; // store in global
         renderImage();
